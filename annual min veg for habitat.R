@@ -9,6 +9,7 @@ setwd(dir)
 library(dplyr)
 library(tidyr)
 library(lubridate)
+library(ggplot2)
 
 gain = 1.0472
 offset = -0.0547
@@ -29,4 +30,13 @@ yrlymin <- hab_df%>%
   group_by(yr)%>%
   summarise(min = min(adj_avg, na.rm = TRUE),
             median = median(adj_avg, na.rm = TRUE))
+
+
+ggplot(yrlymin, aes(x=yr, y=min))+
+  geom_point()+
+  geom_line()
+
+
+
+
 
